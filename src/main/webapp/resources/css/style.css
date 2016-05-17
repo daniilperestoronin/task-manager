@@ -1,0 +1,165 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
+
+body {
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    background-color: #ebebeb;
+}
+
+header.page_header, footer {
+    background-color: #28d;
+    color: aliceblue;
+    font-size: 16px;
+}
+
+header.page_header {
+    width: 100%;
+}
+
+footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 40px;
+    width: 100%;
+    text-align: center;
+}
+
+header.page_header h1 {
+    padding-left: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+header.page_header nav {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+nav.page_nav {
+    padding: 10px;
+}
+
+section.main_section {
+    margin: 30px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a.button {
+    padding: 5px 10px;
+    color: aliceblue;
+}
+
+a.button:hover {
+    background: rgba(0, 193, 247, 0.39);
+    color: #FFF;
+}
+
+.entry,
+.workspace {
+    margin: 16px auto;
+    font-size: 16px;
+    background: #FFFFFF;
+}
+
+.entry {
+    width: 400px;
+}
+
+.workspace {
+    width: 800px;
+}
+
+.workspace-header,
+.entry-header,
+.entry p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.workspace-header,
+.entry-header {
+    background: #28d;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: normal;
+    text-align: center;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.workspace-container,
+.entry-container {
+    padding: 12px;
+}
+
+.workspace p,
+.entry p {
+    padding: 12px;
+}
+
+.workspace input,
+.workspace select,
+.entry input,
+.entry select {
+    box-sizing: border-box;
+    display: block;
+    border-width: 1px;
+    border-style: solid;
+    padding: 5px;
+    outline: 0;
+    font-family: inherit;
+    font-size: 0.95em;
+}
+
+.workspace select,
+.workspace input[type="text"],
+.workspace input[type="commit"],
+.workspace input[type="password"],
+.entry select,
+.entry input[type="text"],
+.entry input[type="commit"],
+.entry input[type="password"] {
+    width: 100%;
+    background: #fff;
+    border-color: #bbb;
+    color: #555;
+}
+
+.workspace select:focus,
+.workspace input[type="text"]:focus,
+.workspace input[type="commit"]:focus,
+.workspace input[type="password"]:focus,
+.entry select:focus,
+.entry input[type="text"]:focus,
+.entry input[type="commit"]:focus,
+.entry input[type="password"]:focus {
+    border-color: #888;
+}
+
+.workspace input[type="submit"],
+.entry input[type="submit"] {
+    margin: auto;
+    background: #28d;
+    border-color: transparent;
+    color: #fff;
+    cursor: pointer;
+}
+
+.workspace input[type="submit"]:hover,
+.entry input[type="submit"]:hover {
+    background: #17c;
+}
+
+.workspace input[type="submit"]:focus,
+.entry input[type="submit"]:focus {
+    border-color: #05a;
+}
+
+p.warning {
+    color: rgba(255, 0, 0, 0.71);
+}
