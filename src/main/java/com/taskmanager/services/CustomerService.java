@@ -15,5 +15,5 @@ public interface CustomerService {
 
     List<ProjectScore> getCustomerScores(Customer customer);
 
-    List<TechnicalTask> getUndoneTecnicalTask(Customer customer);
+    List<TechnicalTask> getCustomerTecnicalTask(Customer customer);
 }

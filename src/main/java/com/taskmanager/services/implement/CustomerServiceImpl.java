@@ -41,7 +41,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public List<TechnicalTask> getUndoneTecnicalTask(Customer customer) {
+    public List<TechnicalTask> getCustomerTecnicalTask(Customer customer) {
         return technicalTaskDao.getCustomerTechnicalTask(customer);
     }
 }

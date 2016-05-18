@@ -33,7 +33,7 @@ public class ManagerController {
     }
 
     @RequestMapping("/verification")
-    public String verification(ModelMap model, @RequestParam() String email, String passwd) {
+    public String verification(@RequestParam ModelMap model, String email, String passwd) {
         Manager manager = new Manager(email, passwd);
         int res = identificationService.singIn(manager);
         if (res == -1) {
@@ -47,7 +47,7 @@ public class ManagerController {
     }
 
     @RequestMapping("/registration")
-    public String registration(ModelMap model, @RequestParam() String name,
+    public String registration(@RequestParam ModelMap model, String name,
                                String email, String passwd, String teamName) {
         Manager manager = new Manager(name, email, passwd);
         Team team = new Team();

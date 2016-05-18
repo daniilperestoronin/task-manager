@@ -27,6 +27,7 @@ public class ProjectDaoImpl implements ProjectDao {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("/spring-config.xml");
         this.sessionFactory = (SessionFactory) applicationContext.getBean("sessionFactory");
     }
+
     @Override
     public int addProject(Project project) {
         Session session = sessionFactory.openSession();
@@ -41,7 +42,8 @@ public class ProjectDaoImpl implements ProjectDao {
     public List<Project> getTeamProject(Team team) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        List technicalTasksList = session.createQuery("FROM Project P WHERE P.customer.id=:id")
+        List technicalTasksList = session.createSQLQuery("SELECT *\n" +
+                "FROM project WHERE project.developers_team_id =:id")
                 .setParameter("id", team.getId()).list();
         session.getTransaction().commit();
         session.close();
@@ -50,7 +52,16 @@ public class ProjectDaoImpl implements ProjectDao {
 
     @Override
     public List<Project> getCustomerProject(Customer customer) {
-        return null;
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        List technicalTasksList = session.createSQLQuery("SELECT *\n" +
+                "FROM project\n" +
+                "  INNER JOIN technical_task ON project.technical_task_id = technical_task.technical_task_idtechnical_task_id\n" +
+                "WHERE customer_id = :id")
+                .setParameter("id", customer.getId()).list();
+        session.getTransaction().commit();
+        session.close();
+        return technicalTasksList;
     }
 
     @Override
