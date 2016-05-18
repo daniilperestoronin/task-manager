@@ -7,7 +7,7 @@ import java.util.Objects;
  * Created by perestoronin
  */
 @Entity
-@Table(name = "project_job")
+@Table(name = "project_score")
 public class ProjectScore {
 
     @Id

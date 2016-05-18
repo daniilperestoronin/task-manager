@@ -22,18 +22,15 @@
 
         <section class="entry">
             <h2 class="entry-header">Sing up</h2>
-
-            <form class="entry-container">
-                <p><input type="text" placeholder="Email"></p>
-
-                <p><input type="password" placeholder="Password"></p>
-
-                <p><input type="password" placeholder="Repeat Password"></p>
-
-                <p><input type="text" placeholder="Name"></p>
-
-                <p><input type="text" placeholder="Team title"></p>
-
+            <p class="warning">${WarningMessage}
+            <p>
+                <form class="entry-container" method="post"
+                      action="${pageContext.request.contextPath}/manager/registration">
+            <p><input name="email" type="text" placeholder="Email"></p>
+            <p><input name="passwd" type="password" placeholder="Password"></p>
+            <p><input name="passwd1" type="password" placeholder="Repeat Password"></p>
+            <p><input name="name" type="text" placeholder="Name"></p>
+            <p><input name="teamName" type="text" placeholder="Team title"></p>
                 <p><input type="submit" value="Sign up"></p>
                 <a href="${pageContext.request.contextPath}/manager/singin">Sing in</a>
             </form>

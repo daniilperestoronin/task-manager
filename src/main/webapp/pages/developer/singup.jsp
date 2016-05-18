@@ -22,24 +22,26 @@
 
         <section class="entry">
             <h2 class="entry-header">Sing up</h2>
+            <p class="warning">${WarningMessage}
+            <p>
+                <form class="entry-container" method="post"
+                      action="${pageContext.request.contextPath}/developer/registration">
+            <p><input name="email" type="text" placeholder="Email"></p>
 
-            <form class="entry-container">
-                <p><input type="text" placeholder="Email"></p>
+            <p><input name="passwd" type="password" placeholder="Password"></p>
 
-                <p><input type="password" placeholder="Password"></p>
+            <p><input name="passwd1" type="password" placeholder="Repeat Password"></p>
 
-                <p><input type="password" placeholder="Repeat Password"></p>
+            <p><input name="name" type="text" placeholder="Name"></p>
 
-                <p><input type="text" placeholder="Name"></p>
+            <p><input name="teamId" type="number" min="1" value="1" placeholder="Team ID"></p>
 
-                <p><input type="text" placeholder="Team ID"></p>
-
-                <p><select Level="Level">
+            <p><select name="level" Level="Level">
                     <option disabled>choose your level</option>
-                    <option value="Junior">Junior</option>
-                    <option value="Middle">Middle</option>
-                    <option value="Seignior">Seignior</option>
-                    <option value="Lead">Lead</option>
+                <option value="JUNIOR">Junior</option>
+                <option value="MIDDLE">Middle</option>
+                <option value="SENIOR">Seignior</option>
+                <option value="LEAD">Lead</option>
                 </select></p>
                 <p><input type="submit" value="Sign up"></p>
                 <a href="${pageContext.request.contextPath}/developer/singin">Sing in</a>

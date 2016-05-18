@@ -18,10 +18,24 @@ public class Manager implements Identification {
     private int id;
     @Column(name = "manager_name", nullable = false)
     private String name;
-    @Column(name = "manager_email ", nullable = false)
+    @Column(name = "manager_email", nullable = false)
     private String email;
     @Column(name = "manager_passwd", nullable = false)
     private String passwd;
+
+    public Manager() {
+    }
+
+    public Manager(String passwd, String email) {
+        this.passwd = passwd;
+        this.email = email;
+    }
+
+    public Manager(String name, String email, String passwd) {
+        this.name = name;
+        this.email = email;
+        this.passwd = passwd;
+    }
 
     public int getId() {
         return id;

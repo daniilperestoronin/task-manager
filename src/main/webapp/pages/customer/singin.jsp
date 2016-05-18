@@ -21,9 +21,7 @@
         </header>
         <section class="entry">
             <h2 class="entry-header">Sing in</h2>
-
             <p class="warning">${WarningMessage}<p>
-
             <form class="entry-container" method="post"
                   action="${pageContext.request.contextPath}/customer/verification">
                 <p><input name="email" type="text" placeholder="Email"></p>

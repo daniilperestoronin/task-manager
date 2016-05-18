@@ -21,12 +21,12 @@
         </header>
         <section class="entry">
             <h2 class="entry-header">Sing in</h2>
-
-            <form class="entry-container">
-                <p><input type="text" placeholder="Email"></p>
-
-                <p><input type="password" placeholder="Password"></p>
-
+            <p class="warning">${WarningMessage}
+            <p>
+                <form class="entry-container" method="post"
+                      action="${pageContext.request.contextPath}/manager/verification">
+            <p><input name="email" type="text" placeholder="Email"></p>
+            <p><input name="passwd" type="password" placeholder="Password"></p>
                 <p><input type="submit" value="Sing in"></p>
                 <a href="${pageContext.request.contextPath}/manager/singup">Sign up</a>
             </form>

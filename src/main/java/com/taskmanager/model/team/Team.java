@@ -1,6 +1,7 @@
 package com.taskmanager.model.team;
 
 import com.taskmanager.model.developer.Developer;
+import com.taskmanager.model.identification.Identification;
 import com.taskmanager.model.manager.Manager;
 import com.taskmanager.model.project.Project;
 
@@ -14,7 +15,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "developers_team")
-public class Team {
+public class Team implements Identification {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

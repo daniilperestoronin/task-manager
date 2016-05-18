@@ -26,7 +26,12 @@ public class Customer implements Identification {
     public Customer() {
     }
 
-    public Customer(String name, String passwd, String email) {
+    public Customer(String email, String passwd) {
+        this.email = email;
+        this.passwd = passwd;
+    }
+
+    public Customer(String name, String email, String passwd) {
         this.name = name;
         this.passwd = passwd;
         this.email = email;

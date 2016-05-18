@@ -33,7 +33,7 @@ public class CustomerController {
 
     @RequestMapping("/verification")
     public String verification(ModelMap model, @RequestParam() String email, String passwd) {
-        Customer customer = new Customer("test", "test", "test");
+        Customer customer = new Customer("", email, passwd);
         int res = identificationService.singIn(customer);
         if (res == -1) {
             model.addAttribute("WarningMessage", "email is not registered");
@@ -47,7 +47,7 @@ public class CustomerController {
 
     @RequestMapping("/registration")
     public String registration(ModelMap model, @RequestParam() String name, String email, String passwd) {
-        Customer customer = new Customer("test", "test", "test");
+        Customer customer = new Customer(name, email, passwd);
         int res = identificationService.singUp(customer);
         if (res == -1) {
             model.addAttribute("WarningMessage", "email already taken");
@@ -76,7 +76,6 @@ public class CustomerController {
 
     @RequestMapping("/singout")
     public String singout(ModelMap model) {
-        model.addAttribute("message", "Hello world!");
         return "/index";
     }
 }

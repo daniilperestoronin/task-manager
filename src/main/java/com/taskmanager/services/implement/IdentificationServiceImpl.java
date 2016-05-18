@@ -7,6 +7,7 @@ import com.taskmanager.model.customer.Customer;
 import com.taskmanager.model.developer.Developer;
 import com.taskmanager.model.identification.Identification;
 import com.taskmanager.model.manager.Manager;
+import com.taskmanager.model.team.Team;
 import com.taskmanager.services.IdentificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,8 +42,8 @@ public class IdentificationServiceImpl implements IdentificationService {
             return customerDao.singUp((Customer) identificationObject);
         if (identificationObject instanceof Developer)
             return developerDao.singUp((Developer) identificationObject);
-        if (identificationObject instanceof Manager)
-            return managerDao.singUp((Manager) identificationObject);
+        if (identificationObject instanceof Team)
+            return managerDao.singUp((Team) identificationObject);
         return 0;
     }
 }

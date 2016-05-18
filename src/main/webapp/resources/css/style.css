@@ -120,10 +120,12 @@ a.button:hover {
 .workspace input[type="text"],
 .workspace input[type="commit"],
 .workspace input[type="password"],
+.workspace input[type="number"],
 .entry select,
 .entry input[type="text"],
 .entry input[type="commit"],
-.entry input[type="password"] {
+.entry input[type="password"],
+.entry input[type="number"] {
     width: 100%;
     background: #fff;
     border-color: #bbb;
@@ -134,10 +136,12 @@ a.button:hover {
 .workspace input[type="text"]:focus,
 .workspace input[type="commit"]:focus,
 .workspace input[type="password"]:focus,
+.workspace input[type="number"]:focus,
 .entry select:focus,
 .entry input[type="text"]:focus,
 .entry input[type="commit"]:focus,
-.entry input[type="password"]:focus {
+.entry input[type="password"]:focus,
+.entry input[type="number"]:focus {
     border-color: #888;
 }
 

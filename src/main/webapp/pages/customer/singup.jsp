@@ -22,9 +22,7 @@
 
         <section class="entry">
             <h2 class="entry-header">Sing up</h2>
-
             <p class="warning">${WarningMessage}<p>
-
             <form class="entry-container" method="post"
                   action="${pageContext.request.contextPath}/customer/registration">
                 <p><input name="email" type="text" placeholder="Email"></p>

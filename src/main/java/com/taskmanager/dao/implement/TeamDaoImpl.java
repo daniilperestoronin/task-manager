@@ -6,7 +6,8 @@ import com.taskmanager.model.team.Team;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.springframework.stereotype.Component;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -18,10 +19,10 @@ public class TeamDaoImpl implements TeamDao {
     private static final Logger logger = Logger.getLogger(TeamDaoImpl.class);
     SessionFactory sessionFactory;
 
-    public void setSessionFactory(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
+    {
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("/spring-config.xml");
+        this.sessionFactory = (SessionFactory) applicationContext.getBean("sessionFactory");
     }
-
     @Override
     public Team getTeam(Manager manager) {
         Session session = sessionFactory.openSession();
