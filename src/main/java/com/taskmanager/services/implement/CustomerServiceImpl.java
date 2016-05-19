@@ -5,13 +5,11 @@ import com.taskmanager.dao.ProjectDao;
 import com.taskmanager.dao.TechnicalTaskDao;
 import com.taskmanager.model.customer.Customer;
 import com.taskmanager.model.project.Project;
-import com.taskmanager.model.project.ProjectScore;
 import com.taskmanager.model.technicaltask.TechnicalTask;
 import com.taskmanager.services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -33,11 +31,13 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public List<ProjectScore> getCustomerScores(Customer customer) {
-        List<Project> projectList = projectDao.getCustomerProject(customer);
-        List<ProjectScore> projectScores = new LinkedList<>();
-        projectList.forEach(project -> projectScores.add(project.getProjectScore()));
-        return projectScores;
+    public List<Project> getCustomerScores(Customer customer) {
+        try {
+            return projectDao.getCustomerProject(customer);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     @Override

@@ -10,9 +10,9 @@ import java.util.List;
  */
 public interface DeveloperService {
 
-    void setProjectJobScore(ProjectJob projectJob);
+    String setProjectJobScore(ProjectJob projectJob);
 
-    List<ProjectJob> getDeveloperUndoneProjectJob(Developer developer);
+    List<ProjectJob> getDeveloperUnsetProjectJob(Developer developer);
 
-    List<ProjectJob> getDeveloperDoneProjectJob(Developer developer);
+    List<ProjectJob> getDeveloperSetProjectJob(Developer developer);
 }

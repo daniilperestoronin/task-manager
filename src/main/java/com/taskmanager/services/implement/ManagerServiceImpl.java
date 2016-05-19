@@ -30,7 +30,12 @@ public class ManagerServiceImpl implements ManagerService {
 
     @Override
     public int createProject(Project project) {
-        return projectDao.addProject(project);
+        try {
+            return projectDao.addProject(project);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return -1;
     }
 
     @Override

@@ -25,9 +25,7 @@
             <form class="entry-container" method="post"
                   action="${pageContext.request.contextPath}/customer/verification">
                 <p><input name="email" type="text" placeholder="Email"></p>
-
                 <p><input name="passwd" type="password" placeholder="Password"></p>
-
                 <p><input type="submit" value="Sing in"></p>
                 <a href="${pageContext.request.contextPath}/customer/singup">Sign up</a>
             </form>

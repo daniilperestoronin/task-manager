@@ -47,7 +47,7 @@ public class CustomerController {
         }
         customer.setId(customerId);
         httpSession.setAttribute("customer", customer);
-        return "/customer/newtask";
+        return "/customer/welcomepage";
     }
 
     @RequestMapping("/registration")
@@ -60,7 +60,7 @@ public class CustomerController {
         }
         customer.setId(customerId);
         httpSession.setAttribute("customer", customer);
-        return "/customer/newtask";
+        return "/customer/welcomepage";
     }
 
     @RequestMapping("/newtask")
@@ -80,7 +80,7 @@ public class CustomerController {
     public String myScoring(HttpSession httpSession, ModelMap model) {
         Customer customer = (Customer) httpSession.getAttribute("customer");
         if (customer != null)
-            model.addAttribute("Scores", customerService.getCustomerScores(customer));
+            model.addAttribute("Projects", customerService.getCustomerScores(customer));
         return "/customer/myscoring";
     }
 

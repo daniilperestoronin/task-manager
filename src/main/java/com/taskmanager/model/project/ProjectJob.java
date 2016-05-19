@@ -26,6 +26,8 @@ public class ProjectJob implements Serializable {
     @Column(name = "developer_level")
     @Enumerated(EnumType.STRING)
     private DeveloperLevel developerLevel;
+    @Column(name = "developer_time")
+    private String developerTime;
 
     public ProjectJob() {
     }
@@ -75,6 +77,14 @@ public class ProjectJob implements Serializable {
 
     public void setDeveloperLevel(DeveloperLevel developerLevel) {
         this.developerLevel = developerLevel;
+    }
+
+    public String getDeveloperTime() {
+        return developerTime;
+    }
+
+    public void setDeveloperTime(String developerTime) {
+        this.developerTime = developerTime;
     }
 
     @Override

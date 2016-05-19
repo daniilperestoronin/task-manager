@@ -9,10 +9,9 @@
 <header class="page_header" id="page_header">
     <h1>Jobs Plainer</h1>
     <nav class="page_nav" id="page_nav">
-        <a class="button" href="${pageContext.request.contextPath}/customer/newtask">New technical task</a>
-        <a class="button" href="">My scoring</a>
-        <a class="button" href="${pageContext.request.contextPath}/customer/mytask">My technical task</a>
-        <a class="button" href="${pageContext.request.contextPath}/customer/singout">SingOut</a>
+        <a class="button" href="${pageContext.request.contextPath}/developer/newtasks">New tasks</a>
+        <a class="button" href="">Tasks in</a>
+        <a class="button" href="${pageContext.request.contextPath}/developer/singout">SingOut</a>
     </nav>
 </header>
 
@@ -21,16 +20,18 @@
         <header id="section_header">
         </header>
         <section class="workspace">
-            <h2 class="workspace-header">Scorings</h2>
-            <c:forEach var="task" items="${Projects}">
+            <h2 class="workspace-header">Tasks</h2>
+            <c:forEach var="task" items="${tasksIn}">
                 <tr>
                     <td>Id</td>
                     <td><input name="textfield" type="text" value="<c:out value="${task.id}"/>" disabled></td>
                     <td>Name</td>
                     <td><input name="textfield" type="text" value="<c:out value="${task.name}"/>" disabled></td>
                     <td>Description</td>
-                    <td><input name="textfield" type="text" value="<c:out value="${task.projectScore.score}"/>"
-                               disabled>
+                    <td><input name="textfield" type="text" value="<c:out value="${task.description}"/>" disabled>
+                    </td>
+                    <td>Time</td>
+                    <td><input name="textfield" type="text" value="<c:out value="${task.developerTime}"/>" disabled>
                     </td>
                 </tr>
             </c:forEach>

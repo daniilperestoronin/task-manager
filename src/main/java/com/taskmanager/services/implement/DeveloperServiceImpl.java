@@ -26,17 +26,32 @@ public class DeveloperServiceImpl implements DeveloperService {
 
 
     @Override
-    public void setProjectJobScore(ProjectJob projectJob) {
-
+    public String setProjectJobScore(ProjectJob projectJob) {
+        try {
+            projectDao.setProjectJobTime(projectJob);
+            return "Score successfully set";
+        } catch (Exception e) {
+            return "Score set error";
+        }
     }
 
     @Override
-    public List<ProjectJob> getDeveloperUndoneProjectJob(Developer developer) {
+    public List<ProjectJob> getDeveloperUnsetProjectJob(Developer developer) {
+        try {
+            return projectDao.getDeveloperUnsetProjectList(developer);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return null;
     }
 
     @Override
-    public List<ProjectJob> getDeveloperDoneProjectJob(Developer developer) {
+    public List<ProjectJob> getDeveloperSetProjectJob(Developer developer) {
+        try {
+            return projectDao.getDeveloperSetProjectList(developer);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return null;
     }
 }

@@ -11,7 +11,7 @@
     <nav class="page_nav" id="page_nav">
         <a class="button" href="${pageContext.request.contextPath}/customer/newtask">New technical task</a>
         <a class="button" href="${pageContext.request.contextPath}/customer/myscoring">My scoring</a>
-        <a class="button" href="">My technical task</a>
+        <a class="button" href="${pageContext.request.contextPath}/customer/mytask">My technical task</a>
         <a class="button" href="${pageContext.request.contextPath}/customer/singout">SingOut</a>
     </nav>
 </header>

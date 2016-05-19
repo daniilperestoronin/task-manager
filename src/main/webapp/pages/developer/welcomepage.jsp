@@ -8,26 +8,22 @@
 <header class="page_header" id="page_header">
     <h1>Jobs Plainer</h1>
     <nav class="page_nav" id="page_nav">
-        <a class="button" href="">My new jobs</a>
-        <a class="button" href="">My done jobs</a>
+        <a class="button" href="${pageContext.request.contextPath}/developer/newtasks">New tasks</a>
+        <a class="button" href="${pageContext.request.contextPath}/developer/tasksin">Tasks in</a>
         <a class="button" href="${pageContext.request.contextPath}/developer/singout">SingOut</a>
     </nav>
 </header>
-
 <section class="main_section" id="main_section">
     <article>
         <header id="section_header">
         </header>
         <section class="workspace">
-            <h2 class="workspace-header">Tasks</h2>
+            <h2 class="workspace-header">Welcome!</h2>
 
-            <p>Task1</p>
-
-            <p>Task2</p>
+            <p>Welcome worlds</p>
         </section>
     </article>
 </section>
-
 <footer id="page_footer">
     <p>2016 by D.Perestoronin</p>
 </footer>

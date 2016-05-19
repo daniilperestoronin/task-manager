@@ -46,27 +46,27 @@ CREATE TABLE technical_task_job (
 );
 
 CREATE TABLE project (
-	project_id SERIAL PRIMARY KEY,
-	project_name VARCHAR(255),
+	project_id          SERIAL PRIMARY KEY,
+	project_name        VARCHAR(255),
 	project_description TEXT,
-	technical_task_id integer REFERENCES technical_task,
-	developers_team_id integer REFERENCES developers_team
+	p_technical_task_id INTEGER REFERENCES technical_task,
+	developers_team_id  INTEGER REFERENCES developers_team
 );
 
 CREATE TABLE project_score (
 	project_score_id SERIAL PRIMARY KEY,
-	project_id integer REFERENCES project,
-	project_score FLOAT NOT NULL
+	ps_project_id    INTEGER REFERENCES project,
+	project_score    FLOAT NOT NULL
 );
 
 CREATE TABLE project_job (
-	project_job_id SERIAL PRIMARY KEY,
-	project_id integer REFERENCES project,
-	developer_id integer REFERENCES developer,
-	project_job_name VARCHAR(255),
-	project_job_description TEXT NOT NULL,
-	developer_level VARCHAR(255) NOT NULL,
-	developer_time  interval
+	project_job_id          SERIAL PRIMARY KEY,
+	project_id              INTEGER REFERENCES project,
+	developer_id            INTEGER REFERENCES developer,
+	project_job_name        VARCHAR(255),
+	project_job_description TEXT         NOT NULL,
+	developer_level         VARCHAR(255) NOT NULL,
+	developer_time          VARCHAR(255)
 );
 
 
@@ -273,3 +273,29 @@ BEGIN
 	END IF;
 END
 $BODY$ LANGUAGE plpgsql;
+
+SELECT customer_singup('test', 'test', 'test');
+SELECT developer_singup('test', 'test', 'test', 'LEAD', 1);
+SELECT manager_singup('test', 'test', 'test', 'test');
+
+INSERT INTO technical_task (customer_id, task_name, task_description) VALUES
+	(1, 'test_technical_task_name1', 'test_technical_task_description1'),
+	(1, 'test_technical_task_name2', 'test_technical_task_description2');
+
+INSERT INTO technical_task_job (technical_task_id, job_name, developer_level, job_description) VALUES
+	(1, 'test_job_name1', 'LEAD', 'test_job_description1'),
+	(1, 'test_job_name2', 'LEAD', 'test_job_description2'),
+	(1, 'test_job_name3', 'LEAD', 'test_job_description3');
+
+INSERT INTO project (project_name, project_description, p_technical_task_id, developers_team_id) VALUES
+	('test_project', 'test_project_descr', 1, 1);
+
+INSERT INTO project_job (project_id, developer_id, project_job_name, project_job_description, developer_level) VALUES
+	(1, 1, 'test1', 'description1', 'LEAD');
+
+INSERT INTO project_job (project_id, developer_id, project_job_name, project_job_description, developer_level, developer_time)
+VALUES
+	(1, 1, 'test1', 'description1', 'LEAD', INTERVAL '82 minute');
+
+INSERT INTO project_score (ps_project_id, project_score) VALUES
+	(1, 100.1);
