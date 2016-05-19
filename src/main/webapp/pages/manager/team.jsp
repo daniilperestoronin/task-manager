@@ -9,38 +9,36 @@
 <header class="page_header" id="page_header">
     <h1>Jobs Plainer</h1>
     <nav class="page_nav" id="page_nav">
-        <a class="button" href="${pageContext.request.contextPath}/customer/newtask">New technical task</a>
-        <a class="button" href="${pageContext.request.contextPath}/customer/myscoring">My scoring</a>
-        <a class="button" href="${pageContext.request.contextPath}/customer/mytask">My technical task</a>
-        <a class="button" href="${pageContext.request.contextPath}/customer/singout">SingOut</a>
+        <a class="button" href="${pageContext.request.contextPath}/manager/team">My team</a>
+        <a class="button" href="${pageContext.request.contextPath}/manager/technicaltasks">Technical tasks</a>
+        <a class="button" href="">Projects</a>
+        <a class="button" href="${pageContext.request.contextPath}/manager/singout">SingOut</a>
     </nav>
 </header>
-
 <section class="main_section" id="main_section">
     <article>
         <header id="section_header">
         </header>
         <section class="workspace">
             <h2 class="workspace-header">Tasks</h2>
-
             <form method="post" action="">
-                <c:forEach var="team" items="${Tasks}">
+                <c:forEach var="team" items="${team}">
                     <p>Id :
                         <input name="textfield" type="text" value="<c:out value="${team.id}"/>" disabled></p>
                     <p>Name :
                         <input name="textfield" type="text" value="<c:out value="${team.name}"/>" disabled></p>
-                    <p>Description :
-                        <input name="textfield" type="text" value="<c:out value="${team.description}"/>" disabled>
-                    </p>
-                    <c:forEach var="developer" items="${team.technicalTaskJobList}">
-                        <p>Tasks job</p>
+                    <c:forEach var="developer" items="${team.developerList}">
+                        <p>Developers:</p>
                         <p>Name :
                             <input name="textfield" type="text" value="<c:out value="${developer.name}"/>" disabled></p>
-                        <p>Description :
-                            <input name="textfield" type="text" value="<c:out value="${developer.description}"/>"
+                        <p>Email :
+                            <input name="textfield" type="text" value="<c:out value="${developer.email}"/>"
                                    disabled></p>
                         <p>Developer level :
                             <input name="textfield" type="text" value="<c:out value="${developer.developerLevel}"/>"
+                                   disabled></p>
+                        <p>isBusy :
+                            <input name="textfield" type="text" value="<c:out value="${developer.isBusy}"/>"
                                    disabled></p>
                     </c:forEach>
                 </c:forEach>

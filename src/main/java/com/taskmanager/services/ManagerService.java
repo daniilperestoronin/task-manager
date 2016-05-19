@@ -1,8 +1,8 @@
 package com.taskmanager.services;
 
-import com.taskmanager.model.developer.Developer;
 import com.taskmanager.model.manager.Manager;
 import com.taskmanager.model.project.Project;
+import com.taskmanager.model.team.Team;
 import com.taskmanager.model.technicaltask.TechnicalTask;
 
 import java.util.List;
@@ -14,7 +14,7 @@ public interface ManagerService {
 
     int createProject(Project project);
 
-    List<Developer> getNotBusyDeveloperList(Manager manager);
+    Team getTeam(Manager manager);
 
-    List<TechnicalTask> getAllUnduneTechnicalTasck();
+    List<TechnicalTask> getAllUndoneTechnicalTasck();
 }

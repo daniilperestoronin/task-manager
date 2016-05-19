@@ -18,5 +18,6 @@
         <mapping class="com.taskmanager.model.project.Project"/>
         <mapping class="com.taskmanager.model.project.ProjectJob"/>
         <mapping class="com.taskmanager.model.project.ProjectScore"/>
+        <mapping class="com.taskmanager.model.team.Team"/>
     </session-factory>
 </hibernate-configuration>

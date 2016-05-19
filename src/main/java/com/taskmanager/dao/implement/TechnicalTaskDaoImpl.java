@@ -27,27 +27,38 @@ public class TechnicalTaskDaoImpl implements TechnicalTaskDao {
         this.sessionFactory = (SessionFactory) applicationContext.getBean("sessionFactory");
     }
     @Override
-    public int addTechnicalTask(TechnicalTask technicalTask) {
-        Session session = sessionFactory.openSession();
-        session.beginTransaction();
-        Integer id = (Integer) session.save(technicalTask);
-        session.getTransaction().commit();
-        session.close();
-        return id;
+    public int addTechnicalTask(TechnicalTask technicalTask) throws Exception {
+        try {
+            Session session = sessionFactory.openSession();
+            session.beginTransaction();
+            Integer id = (Integer) session.save(technicalTask);
+            session.getTransaction().commit();
+            session.close();
+            return id;
+        } catch (Exception e) {
+            logger.error(e);
+            throw new Exception("DB error" + e.getMessage());
+        }
     }
 
     @Override
-    public List<TechnicalTask> getNotDoneTechnicalTask() {
+    public List<TechnicalTask> getNotDoneTechnicalTask() throws Exception {
+        try {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        List technicalTasksList = session.createQuery("FROM TechnicalTask").list();
-        session.getTransaction().commit();
+            List technicalTasksList = session.createQuery("SELECT t FROM TechnicalTask t, Project p" +
+                    " WHERE  t.id!=p.technTaskId").list();
         session.close();
         return technicalTasksList;
+        } catch (Exception e) {
+            logger.error(e);
+            throw new Exception("DB error" + e.getMessage());
+        }
     }
 
     @Override
-    public List<TechnicalTask> getCustomerTechnicalTask(Customer customer) {
+    public List<TechnicalTask> getCustomerTechnicalTask(Customer customer) throws Exception {
+        try {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         List technicalTasksList = session.createQuery("FROM TechnicalTask T WHERE T.customer.id=:id")
@@ -55,24 +66,38 @@ public class TechnicalTaskDaoImpl implements TechnicalTaskDao {
         session.getTransaction().commit();
         session.close();
         return technicalTasksList;
+        } catch (Exception e) {
+            logger.error(e);
+            throw new Exception("DB error" + e.getMessage());
+        }
     }
 
     @Override
-    public void updateTechnicalTask(TechnicalTask technicalTask) {
+    public void updateTechnicalTask(TechnicalTask technicalTask) throws Exception {
+        try {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         session.update(technicalTask);
         session.getTransaction().commit();
         session.close();
+        } catch (Exception e) {
+            logger.error(e);
+            throw new Exception("DB error" + e.getMessage());
+        }
 
     }
 
     @Override
-    public void deleteTechnicalTask(TechnicalTask technicalTask) {
-        Session session = sessionFactory.openSession();
-        session.beginTransaction();
-        session.delete(technicalTask);
-        session.getTransaction().commit();
-        session.close();
+    public void deleteTechnicalTask(TechnicalTask technicalTask) throws Exception {
+        try {
+            Session session = sessionFactory.openSession();
+            session.beginTransaction();
+            session.delete(technicalTask);
+            session.getTransaction().commit();
+            session.close();
+        } catch (Exception e) {
+            logger.error(e);
+            throw new Exception("DB error" + e.getMessage());
+        }
     }
 }

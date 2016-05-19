@@ -6,6 +6,7 @@ import com.taskmanager.dao.TechnicalTaskDao;
 import com.taskmanager.model.developer.Developer;
 import com.taskmanager.model.project.ProjectJob;
 import com.taskmanager.services.DeveloperService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +18,7 @@ import java.util.List;
 @Service
 public class DeveloperServiceImpl implements DeveloperService {
 
+    private static final Logger logger = Logger.getLogger(DeveloperServiceImpl.class);
     @Autowired
     private CustomerDao customerDao;
     @Autowired
@@ -40,6 +42,7 @@ public class DeveloperServiceImpl implements DeveloperService {
         try {
             return projectDao.getDeveloperUnsetProjectList(developer);
         } catch (Exception e) {
+            logger.error(e);
             e.printStackTrace();
         }
         return null;
@@ -50,6 +53,7 @@ public class DeveloperServiceImpl implements DeveloperService {
         try {
             return projectDao.getDeveloperSetProjectList(developer);
         } catch (Exception e) {
+            logger.error(e);
             e.printStackTrace();
         }
         return null;

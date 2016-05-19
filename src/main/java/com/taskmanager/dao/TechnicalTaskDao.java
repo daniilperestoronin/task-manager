@@ -10,13 +10,13 @@ import java.util.List;
  */
 public interface TechnicalTaskDao {
 
-    int addTechnicalTask(TechnicalTask technicalTask);
+    int addTechnicalTask(TechnicalTask technicalTask) throws Exception;
 
-    List<TechnicalTask> getNotDoneTechnicalTask();
+    List<TechnicalTask> getNotDoneTechnicalTask() throws Exception;
 
-    List<TechnicalTask> getCustomerTechnicalTask(Customer customer);
+    List<TechnicalTask> getCustomerTechnicalTask(Customer customer) throws Exception;
 
-    void updateTechnicalTask(TechnicalTask technicalTask);
+    void updateTechnicalTask(TechnicalTask technicalTask) throws Exception;
 
-    void deleteTechnicalTask(TechnicalTask technicalTask);
+    void deleteTechnicalTask(TechnicalTask technicalTask) throws Exception;
 }

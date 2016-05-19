@@ -8,7 +8,7 @@ import com.taskmanager.model.team.Team;
  */
 public interface ManagerDao {
 
-    int singIn(Manager manager);
+    int singIn(Manager manager) throws Exception;
 
-    int singUp(Team team);
+    int singUp(Team team) throws Exception;
 }

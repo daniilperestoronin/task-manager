@@ -24,7 +24,8 @@ public class DeveloperDaoImpl implements DeveloperDao {
     }
 
     @Override
-    public int singIn(Developer developer) {
+    public int singIn(Developer developer) throws Exception {
+        try {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         Integer result = (Integer) session.createSQLQuery("SELECT developer_singin(:d_email,:d_password)")
@@ -34,10 +35,15 @@ public class DeveloperDaoImpl implements DeveloperDao {
         session.getTransaction().commit();
         session.close();
         return result;
+        } catch (Exception e) {
+            logger.error(e);
+            throw new Exception("DB error" + e.getMessage());
+        }
     }
 
     @Override
-    public int singUp(Developer developer) {
+    public int singUp(Developer developer) throws Exception {
+        try {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         Integer result = (Integer) session.createSQLQuery(
@@ -51,5 +57,9 @@ public class DeveloperDaoImpl implements DeveloperDao {
         session.getTransaction().commit();
         session.close();
         return result;
+        } catch (Exception e) {
+            logger.error(e);
+            throw new Exception("DB error" + e.getMessage());
+        }
     }
 }

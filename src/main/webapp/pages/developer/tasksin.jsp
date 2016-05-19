@@ -21,17 +21,17 @@
         </header>
         <section class="workspace">
             <h2 class="workspace-header">Tasks</h2>
-            <c:forEach var="task" items="${tasksIn}">
+            <c:forEach var="team" items="${tasksIn}">
                 <tr>
                     <td>Id</td>
-                    <td><input name="textfield" type="text" value="<c:out value="${task.id}"/>" disabled></td>
+                    <td><input name="textfield" type="text" value="<c:out value="${team.id}"/>" disabled></td>
                     <td>Name</td>
-                    <td><input name="textfield" type="text" value="<c:out value="${task.name}"/>" disabled></td>
+                    <td><input name="textfield" type="text" value="<c:out value="${team.name}"/>" disabled></td>
                     <td>Description</td>
-                    <td><input name="textfield" type="text" value="<c:out value="${task.description}"/>" disabled>
+                    <td><input name="textfield" type="text" value="<c:out value="${team.description}"/>" disabled>
                     </td>
                     <td>Time</td>
-                    <td><input name="textfield" type="text" value="<c:out value="${task.developerTime}"/>" disabled>
+                    <td><input name="textfield" type="text" value="<c:out value="${team.developerTime}"/>" disabled>
                     </td>
                 </tr>
             </c:forEach>

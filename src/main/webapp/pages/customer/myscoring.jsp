@@ -22,17 +22,16 @@
         </header>
         <section class="workspace">
             <h2 class="workspace-header">Scorings</h2>
-            <c:forEach var="task" items="${Projects}">
-                <tr>
-                    <td>Id</td>
-                    <td><input name="textfield" type="text" value="<c:out value="${task.id}"/>" disabled></td>
-                    <td>Name</td>
-                    <td><input name="textfield" type="text" value="<c:out value="${task.name}"/>" disabled></td>
-                    <td>Description</td>
-                    <td><input name="textfield" type="text" value="<c:out value="${task.projectScore.score}"/>"
+            <c:forEach var="team" items="${Projects}">
+                <p> Id :
+                    <input name="textfield" type="text" value="<c:out value="${team.id}"/>" disabled></p>
+                <p>Name :
+                    <input name="textfield" type="text" value="<c:out value="${team.name}"/>" disabled>
+                <p>
+                <p>Description :
+                    <input name="textfield" type="text" value="<c:out value="${team.projectScore.score}"/>"
                                disabled>
-                    </td>
-                </tr>
+                </p>
             </c:forEach>
         </section>
     </article>

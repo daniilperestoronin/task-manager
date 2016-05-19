@@ -7,7 +7,7 @@ import com.taskmanager.model.customer.Customer;
  */
 public interface CustomerDao {
 
-    int singIn(Customer customer);
+    int singIn(Customer customer) throws Exception;
 
-    int singUp(Customer customer);
+    int singUp(Customer customer) throws Exception;
 }

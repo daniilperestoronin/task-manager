@@ -30,9 +30,6 @@ public class Team implements Identification, Serializable {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "developers_team_id")
     private List<Developer> developerList;
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "developers_team_id")
-    private List<Project> projectList;
 
     public Team() {
     }
@@ -41,7 +38,6 @@ public class Team implements Identification, Serializable {
         this.name = name;
         this.manager = manager;
         this.developerList = developerList;
-        this.projectList = projectList;
     }
 
     public int getId() {
@@ -76,14 +72,6 @@ public class Team implements Identification, Serializable {
         this.developerList = developerList;
     }
 
-    public List<Project> getProjectList() {
-        return projectList;
-    }
-
-    public void setProjectList(List<Project> projectList) {
-        this.projectList = projectList;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -92,12 +80,11 @@ public class Team implements Identification, Serializable {
         return id == team.id &&
                 Objects.equals(name, team.name) &&
                 Objects.equals(manager, team.manager) &&
-                Objects.equals(developerList, team.developerList) &&
-                Objects.equals(projectList, team.projectList);
+                Objects.equals(developerList, team.developerList);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, manager, developerList, projectList);
+        return Objects.hash(id, name, manager, developerList);
     }
 }

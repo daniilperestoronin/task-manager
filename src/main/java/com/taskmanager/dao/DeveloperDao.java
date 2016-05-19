@@ -7,7 +7,7 @@ import com.taskmanager.model.developer.Developer;
  */
 public interface DeveloperDao {
 
-    int singIn(Developer developer);
+    int singIn(Developer developer) throws Exception;
 
-    int singUp(Developer developer);
+    int singUp(Developer developer) throws Exception;
 }

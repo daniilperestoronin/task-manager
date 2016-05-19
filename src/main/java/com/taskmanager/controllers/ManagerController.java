@@ -10,6 +10,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
+
 /**
  * Created by perestoronin
  */
@@ -33,7 +35,7 @@ public class ManagerController {
     }
 
     @RequestMapping("/verification")
-    public String verification(ModelMap model, @RequestParam String email, String passwd) {
+    public String verification(HttpSession httpSession, ModelMap model, @RequestParam String email, String passwd) {
         Manager manager = new Manager(email, passwd);
         int res = identificationService.singIn(manager);
         if (res == -1) {
@@ -43,11 +45,13 @@ public class ManagerController {
             model.addAttribute("WarningMessage", "incorrect password");
             return "/manager/singin";
         }
-        return "/manager/myteam";
+        manager.setId(res);
+        httpSession.setAttribute("manager", manager);
+        return "/manager/welcomepage";
     }
 
     @RequestMapping("/registration")
-    public String registration(ModelMap model, @RequestParam String name,
+    public String registration(HttpSession httpSession, ModelMap model, @RequestParam String name,
                                String email, String passwd, String teamName) {
         Manager manager = new Manager(name, email, passwd);
         Team team = new Team();
@@ -62,7 +66,22 @@ public class ManagerController {
             model.addAttribute("WarningMessage", "team not exist");
             return "/manager/singup";
         }
-        return "/manager/myteam";
+        manager.setId(res);
+        httpSession.setAttribute("manager", manager);
+        return "/manager/welcomepage";
+    }
+
+    @RequestMapping("/technicaltasks")
+    public String listUndoneTechnicalTask(ModelMap model) {
+        model.addAttribute("technicalTasks", managerService.getAllUndoneTechnicalTasck());
+        return "/manager/technicaltasks";
+    }
+
+    @RequestMapping("/team")
+    public String teamList(HttpSession httpSession, ModelMap model) {
+        Manager manager = (Manager) httpSession.getAttribute("manager");
+        model.addAttribute("team", managerService.getTeam(manager));
+        return "/manager/team";
     }
 
     @RequestMapping("/singout")

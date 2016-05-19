@@ -7,6 +7,7 @@ import com.taskmanager.model.customer.Customer;
 import com.taskmanager.model.project.Project;
 import com.taskmanager.model.technicaltask.TechnicalTask;
 import com.taskmanager.services.CustomerService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +19,7 @@ import java.util.List;
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
+    private static final Logger logger = Logger.getLogger(CustomerServiceImpl.class);
     @Autowired
     private CustomerDao customerDao;
     @Autowired
@@ -27,7 +29,13 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public int createNeTechnicalTask(TechnicalTask technicalTask) {
-        return technicalTaskDao.addTechnicalTask(technicalTask);
+        try {
+            return technicalTaskDao.addTechnicalTask(technicalTask);
+        } catch (Exception e) {
+            logger.error(e);
+            e.printStackTrace();
+        }
+        return -1;
     }
 
     @Override
@@ -35,6 +43,7 @@ public class CustomerServiceImpl implements CustomerService {
         try {
             return projectDao.getCustomerProject(customer);
         } catch (Exception e) {
+            logger.error(e);
             e.printStackTrace();
         }
         return null;
@@ -42,6 +51,12 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public List<TechnicalTask> getCustomerTecnicalTask(Customer customer) {
-        return technicalTaskDao.getCustomerTechnicalTask(customer);
+        try {
+            return technicalTaskDao.getCustomerTechnicalTask(customer);
+        } catch (Exception e) {
+            logger.error(e);
+            e.printStackTrace();
+        }
+        return null;
     }
 }

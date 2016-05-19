@@ -8,10 +8,10 @@
 <header class="page_header" id="page_header">
     <h1>Jobs Plainer</h1>
     <nav class="page_nav" id="page_nav">
-        <a class="button" href="${pageContext.request.contextPath}/customer/newtask">New technical task</a>
-        <a class="button" href="${pageContext.request.contextPath}/customer/myscoring">My scoring</a>
-        <a class="button" href="">My technical task</a>
-        <a class="button" href="${pageContext.request.contextPath}/customer/singout">SingOut</a>
+        <a class="button" href="${pageContext.request.contextPath}/manager/team">My team</a>
+        <a class="button" href="${pageContext.request.contextPath}/manager/technicaltasks">Technical tasks</a>
+        <a class="button" href="">Projects</a>
+        <a class="button" href="${pageContext.request.contextPath}/manager/singout">SingOut</a>
     </nav>
 </header>
 <section class="main_section" id="main_section">
@@ -20,7 +20,6 @@
         </header>
         <section class="workspace">
             <h2 class="workspace-header">Welcome!</h2>
-
             <p>Welcome worlds</p>
         </section>
     </article>

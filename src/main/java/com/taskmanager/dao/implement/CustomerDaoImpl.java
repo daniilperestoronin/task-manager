@@ -25,7 +25,8 @@ public class CustomerDaoImpl implements CustomerDao {
     }
 
     @Override
-    public int singIn(Customer customer) {
+    public int singIn(Customer customer) throws Exception {
+        try {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         Integer result = (Integer) session.createSQLQuery("SELECT customer_singin(:c_email,:c_password)")
@@ -35,10 +36,15 @@ public class CustomerDaoImpl implements CustomerDao {
         session.getTransaction().commit();
         session.close();
         return result;
+        } catch (Exception e) {
+            logger.error(e);
+            throw new Exception("DB error" + e.getMessage());
+        }
     }
 
     @Override
-    public int singUp(Customer customer) {
+    public int singUp(Customer customer) throws Exception {
+        try {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         Integer result = (Integer) session.createSQLQuery("SELECT customer_singup(:c_name,:c_email,:c_password)")
@@ -49,5 +55,9 @@ public class CustomerDaoImpl implements CustomerDao {
         session.getTransaction().commit();
         session.close();
         return result;
+        } catch (Exception e) {
+            logger.error(e);
+            throw new Exception("DB error" + e.getMessage());
+        }
     }
 }

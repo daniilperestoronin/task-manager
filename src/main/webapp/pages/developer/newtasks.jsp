@@ -21,19 +21,19 @@
         </header>
         <section class="workspace">
             <h2 class="workspace-header">Tasks</h2>
-            <c:forEach var="task" items="${tasksIn}">
+            <c:forEach var="team" items="${tasksIn}">
                 <form class="entry-container" method="post"
                       action="${pageContext.request.contextPath}/developer/settime">
                     <p> Id :
-                        <input name="id" type="number" min="1" value="1" value="<c:out value="${task.id}"/>" disabled>
+                        <input name="id" type="number" min="1" value="1" value="<c:out value="${team.id}"/>" disabled>
                     </p>
                     <p>Name :
-                        <input name="textfield" type="text" value="<c:out value="${task.name}"/>" disabled></p>
+                        <input name="textfield" type="text" value="<c:out value="${team.name}"/>" disabled></p>
                     <p>Description :
-                        <input name="textfield" type="text" value="<c:out value="${task.description}"/>" disabled>
+                        <input name="textfield" type="text" value="<c:out value="${team.description}"/>" disabled>
                     </p>
                     <p> Time :
-                        <input name="developerTime" type="text" value="<c:out value="${task.developerTime}"/>"></p>
+                        <input name="developerTime" type="text" value="<c:out value="${team.developerTime}"/>"></p>
                     <p><input type="submit" value="Set"></p>
                 </form>
             </c:forEach>
