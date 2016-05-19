@@ -33,7 +33,7 @@ public class DeveloperController {
     }
 
     @RequestMapping("/verification")
-    public String verification(@RequestParam ModelMap model, String email, String passwd) {
+    public String verification(ModelMap model, @RequestParam String email, String passwd) {
         Developer developer = new Developer(email, passwd);
         int res = identificationService.singIn(developer);
         if (res == -1) {
@@ -47,7 +47,7 @@ public class DeveloperController {
     }
 
     @RequestMapping("/registration")
-    public String registration(@RequestParam ModelMap model, String name,
+    public String registration(ModelMap model, @RequestParam String name,
                                String email, String passwd, String level, String teamId) {
         Developer developer = new Developer(Integer.parseInt(teamId), name, email, passwd, DeveloperLevel.stringParser(level), true);
         int res = identificationService.singUp(developer);

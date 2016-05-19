@@ -3,6 +3,7 @@ package com.taskmanager.model.technicaltask;
 import com.taskmanager.model.customer.Customer;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
@@ -11,7 +12,7 @@ import java.util.Objects;
  */
 @Entity
 @Table(name = "technical_task")
-public class TechnicalTask {
+public class TechnicalTask implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,7 +25,7 @@ public class TechnicalTask {
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private Customer customer;
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "technical_task_id")
     private List<TechnicalTaskJob> technicalTaskJobList;
 

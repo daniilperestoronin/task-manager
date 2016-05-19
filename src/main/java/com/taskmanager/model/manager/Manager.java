@@ -3,6 +3,7 @@ package com.taskmanager.model.manager;
 import com.taskmanager.model.identification.Identification;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
@@ -10,7 +11,7 @@ import java.util.Objects;
  */
 @Entity
 @Table(name = "manager")
-public class Manager implements Identification {
+public class Manager implements Identification, Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

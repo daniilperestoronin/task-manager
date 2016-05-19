@@ -3,6 +3,7 @@ package com.taskmanager.model.project;
 import com.taskmanager.model.developer.DeveloperLevel;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
@@ -10,7 +11,7 @@ import java.util.Objects;
  */
 @Entity
 @Table(name = "project_job")
-public class ProjectJob {
+public class ProjectJob implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

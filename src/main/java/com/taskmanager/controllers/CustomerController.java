@@ -10,6 +10,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
+
 /**
  * Created by perestoronin
  */
@@ -33,7 +35,7 @@ public class CustomerController {
     }
 
     @RequestMapping("/verification")
-    public String verification(ModelMap model, @RequestParam String email, String passwd) {
+    public String verification(HttpSession httpSession, ModelMap model, @RequestParam String email, String passwd) {
         Customer customer = new Customer(email, passwd);
         int customerId = identificationService.singIn(customer);
         if (customerId == -1) {
@@ -44,12 +46,12 @@ public class CustomerController {
             return "/customer/singin";
         }
         customer.setId(customerId);
-        model.put("customer", customer);
-        return "/customer/mytask";
+        httpSession.setAttribute("customer", customer);
+        return "/customer/newtask";
     }
 
     @RequestMapping("/registration")
-    public String registration(ModelMap model, @RequestParam String name, String email, String passwd) {
+    public String registration(HttpSession httpSession, ModelMap model, @RequestParam String name, String email, String passwd) {
         Customer customer = new Customer(name, email, passwd);
         int customerId = identificationService.singUp(customer);
         if (customerId == -1) {
@@ -57,8 +59,8 @@ public class CustomerController {
             return "/customer/singup";
         }
         customer.setId(customerId);
-        model.put("customer", customer);
-        return "/customer/mytask";
+        httpSession.setAttribute("customer", customer);
+        return "/customer/newtask";
     }
 
     @RequestMapping("/newtask")
@@ -75,16 +77,16 @@ public class CustomerController {
     }
 
     @RequestMapping("/myscoring")
-    public String myScoring(ModelMap model) {
-        Customer customer = (Customer) model.get("customer");
+    public String myScoring(HttpSession httpSession, ModelMap model) {
+        Customer customer = (Customer) httpSession.getAttribute("customer");
         if (customer != null)
             model.addAttribute("Scores", customerService.getCustomerScores(customer));
         return "/customer/myscoring";
     }
 
     @RequestMapping("/mytask")
-    public String myTask(ModelMap model) {
-        Customer customer = (Customer) model.get("customer");
+    public String myTask(HttpSession httpSession, ModelMap model) {
+        Customer customer = (Customer) httpSession.getAttribute("customer");
         if (customer != null)
             model.addAttribute("Tasks", customerService.getCustomerTecnicalTask(customer));
         return "/customer/mytask";

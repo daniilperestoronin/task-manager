@@ -55,8 +55,8 @@ public class ProjectDaoImpl implements ProjectDao {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         List technicalTasksList = session.createSQLQuery("SELECT *\n" +
-                "FROM project\n" +
-                "  INNER JOIN technical_task ON project.technical_task_id = technical_task.technical_task_idtechnical_task_id\n" +
+                "FROM project p\n" +
+                "  INNER JOIN technical_task t ON p.technical_task_id = t.technical_task_id\n" +
                 "WHERE customer_id = :id")
                 .setParameter("id", customer.getId()).list();
         session.getTransaction().commit();

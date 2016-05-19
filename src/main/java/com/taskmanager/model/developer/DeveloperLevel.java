@@ -1,9 +1,11 @@
 package com.taskmanager.model.developer;
 
+import java.io.Serializable;
+
 /**
  * Created by perestoronin
  */
-public enum DeveloperLevel {
+public enum DeveloperLevel implements Serializable {
     JUNIOR, MIDDLE, SENIOR, LEAD, NOLEVEL;
 
     public static DeveloperLevel stringParser(String level) {

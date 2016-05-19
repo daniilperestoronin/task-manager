@@ -6,6 +6,7 @@ import com.taskmanager.model.manager.Manager;
 import com.taskmanager.model.project.Project;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
@@ -15,7 +16,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "developers_team")
-public class Team implements Identification {
+public class Team implements Identification, Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,10 +27,10 @@ public class Team implements Identification {
     @OneToOne
     @JoinColumn(name = "developers_team_id")
     private Manager manager;
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "developers_team_id")
     private List<Developer> developerList;
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "developers_team_id")
     private List<Project> projectList;
 

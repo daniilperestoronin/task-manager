@@ -2,8 +2,7 @@ CREATE TYPE DEVELOPER_LEVEL AS ENUM ('JUNIOR','MIDDLE','SENIER','LEAD');
 
 CREATE TABLE developers_team (
 	developers_team_id   SERIAL PRIMARY KEY,
-	developers_team_name VARCHAR(255) NOT NULL,
-	developer_id         INTEGER REFERENCES developer
+	developers_team_name VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE developer (
