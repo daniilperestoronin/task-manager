@@ -2,9 +2,9 @@ package com.taskmanager.dao;
 
 import com.taskmanager.model.customer.Customer;
 import com.taskmanager.model.developer.Developer;
+import com.taskmanager.model.manager.Manager;
 import com.taskmanager.model.project.Project;
 import com.taskmanager.model.project.ProjectJob;
-import com.taskmanager.model.team.Team;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ public interface ProjectDao {
 
     int addProject(Project project) throws Exception;
 
-    List<Project> getTeamProject(Team team) throws Exception;
+    List<Project> getTeamProject(Manager manager) throws Exception;
 
     List<Project> getCustomerProject(Customer customer) throws Exception;
 

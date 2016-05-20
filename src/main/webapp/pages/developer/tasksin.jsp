@@ -20,18 +20,18 @@
         <header id="section_header">
         </header>
         <section class="workspace">
-            <h2 class="workspace-header">Tasks</h2>
-            <c:forEach var="team" items="${tasksIn}">
+            <h2 class="workspace-header">Tasks in</h2>
+            <c:forEach var="progect" items="${tasksIn}">
                 <tr>
                     <td>Id</td>
-                    <td><input name="textfield" type="text" value="<c:out value="${team.id}"/>" disabled></td>
+                    <td><input name="textfield" type="text" value="<c:out value="${progect.id}"/>" disabled></td>
                     <td>Name</td>
-                    <td><input name="textfield" type="text" value="<c:out value="${team.name}"/>" disabled></td>
+                    <td><input name="textfield" type="text" value="<c:out value="${progect.name}"/>" disabled></td>
                     <td>Description</td>
-                    <td><input name="textfield" type="text" value="<c:out value="${team.description}"/>" disabled>
+                    <td><input name="textfield" type="text" value="<c:out value="${progect.description}"/>" disabled>
                     </td>
                     <td>Time</td>
-                    <td><input name="textfield" type="text" value="<c:out value="${team.developerTime}"/>" disabled>
+                    <td><input name="textfield" type="text" value="<c:out value="${progect.developerTime}"/>" disabled>
                     </td>
                 </tr>
             </c:forEach>

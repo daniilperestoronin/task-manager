@@ -17,11 +17,13 @@ public class Project implements Serializable {
     private Integer id;
     @Column(name = "p_technical_task_id")
     private Integer technTaskId;
+    @Column(name = "developers_team_id")
+    private Integer teamId;
     @Column(name = "project_name")
     private String name;
     @Column(name = "project_description")
     private String projectDescription;
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "project_id")
     private List<ProjectJob> projectJobList;
     @OneToOne

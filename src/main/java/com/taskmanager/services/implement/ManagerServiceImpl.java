@@ -42,13 +42,30 @@ public class ManagerServiceImpl implements ManagerService {
 
     @Override
     public Team getTeam(Manager manager) {
-        return teamDao.getTeam(manager);
+        try {
+            return teamDao.getTeam(manager);
+        } catch (Exception e) {
+            logger.error(e);
+            e.printStackTrace();
+        }
+        return null;
     }
 
     @Override
     public List<TechnicalTask> getAllUndoneTechnicalTasck() {
         try {
             return technicalTaskDao.getNotDoneTechnicalTask();
+        } catch (Exception e) {
+            logger.error(e);
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public List<Project> getTeamProject(Manager manager) {
+        try {
+            return projectDao.getTeamProject(manager);
         } catch (Exception e) {
             logger.error(e);
             e.printStackTrace();

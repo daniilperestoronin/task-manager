@@ -20,7 +20,7 @@
         <header id="section_header">
         </header>
         <section class="workspace">
-            <h2 class="workspace-header">Scorings</h2>
+            <h2 class="workspace-header">Create status</h2>
             <p>${createmassage}</p>
         </section>
     </article>

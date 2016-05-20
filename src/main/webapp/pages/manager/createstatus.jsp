@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>Jobs Plainer</title>
@@ -20,7 +21,8 @@
         </header>
         <section class="workspace">
             <h2 class="workspace-header">Welcome!</h2>
-            <p>Welcome worlds</p>
+
+            <p><c:out value="${createStatus}"/></p>
         </section>
     </article>
 </section>

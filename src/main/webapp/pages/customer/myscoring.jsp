@@ -21,15 +21,15 @@
         <header id="section_header">
         </header>
         <section class="workspace">
-            <h2 class="workspace-header">Scorings</h2>
-            <c:forEach var="team" items="${Projects}">
+            <h2 class="workspace-header">My scoring</h2>
+            <c:forEach var="progect" items="${Projects}">
                 <p> Id :
-                    <input name="textfield" type="text" value="<c:out value="${team.id}"/>" disabled></p>
+                    <input name="textfield" type="text" value="<c:out value="${progect.id}"/>" disabled></p>
                 <p>Name :
-                    <input name="textfield" type="text" value="<c:out value="${team.name}"/>" disabled>
+                    <input name="textfield" type="text" value="<c:out value="${progect.name}"/>" disabled>
                 <p>
                 <p>Description :
-                    <input name="textfield" type="text" value="<c:out value="${team.projectScore.score}"/>"
+                <input name="textfield" type="text" value="<c:out value="${progect.projectScore.score}"/>"
                                disabled>
                 </p>
             </c:forEach>

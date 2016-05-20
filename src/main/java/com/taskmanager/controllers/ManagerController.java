@@ -1,6 +1,8 @@
 package com.taskmanager.controllers;
 
 import com.taskmanager.model.manager.Manager;
+import com.taskmanager.model.project.Project;
+import com.taskmanager.model.project.ProjectScore;
 import com.taskmanager.model.team.Team;
 import com.taskmanager.services.IdentificationService;
 import com.taskmanager.services.ManagerService;
@@ -77,11 +79,42 @@ public class ManagerController {
         return "/manager/technicaltasks";
     }
 
+    @RequestMapping("/projects")
+    public String listDeveloperProject(HttpSession httpSession, ModelMap model) {
+        Manager manager = (Manager) httpSession.getAttribute("manager");
+        model.addAttribute("projects", managerService.getTeamProject(manager));
+        return "/manager/projects";
+    }
+
     @RequestMapping("/team")
     public String teamList(HttpSession httpSession, ModelMap model) {
         Manager manager = (Manager) httpSession.getAttribute("manager");
         model.addAttribute("team", managerService.getTeam(manager));
         return "/manager/team";
+    }
+
+    @RequestMapping("/newproject")
+    public String newProject(ModelMap model, @RequestParam String id) {
+        model.addAttribute("technicalId", id);
+        return "/manager/newproject";
+    }
+
+    @RequestMapping("/createproject")
+    public String newProject(HttpSession httpSession, ModelMap model, @RequestParam String taskId,
+                             String name, String description, String score) {
+        ProjectScore projectScore = new ProjectScore();
+        projectScore.setScore(Double.parseDouble(score));
+        Project project = new Project();
+        project.setTechnTaskId(Integer.parseInt(taskId));
+        project.setName(name);
+        project.setProjectDescription(description);
+        project.setProjectScore(projectScore);
+        if (managerService.createProject(project) != -1) {
+            model.addAttribute("createStatus", "Project successfully created");
+        } else {
+            model.addAttribute("createStatus", "The project is not created, an error occurred");
+        }
+        return "/manager/createstatus";
     }
 
     @RequestMapping("/singout")

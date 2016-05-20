@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>Jobs Plainer</title>
@@ -19,8 +20,26 @@
         <header id="section_header">
         </header>
         <section class="workspace">
-            <h2 class="workspace-header">Welcome!</h2>
-            <p>Welcome worlds</p>
+            <h2 class="workspace-header">New project</h2>
+
+            <form method="post"
+                  action="${pageContext.request.contextPath}/manager/createproject">
+                <p>Technical task Id :
+                    <input readonly name="taskId" type="text" value="<c:out value="${technicalId}"/>"></p>
+
+                <p>Project name :
+                    <input name="name" type="text" value="Project"></p>
+
+                <p>Project description :
+                    <input name="description" type="text" value="Project description"/>
+                </p>
+
+                <p>Project score :
+                    <input name="score" type="number" min="0" value="0.01" value="Project description"/>
+                </p>
+
+                <p><input type="submit" value="Create"></p>
+            </form>
         </section>
     </article>
 </section>

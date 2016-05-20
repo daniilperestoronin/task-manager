@@ -24,13 +24,18 @@ public class TeamDaoImpl implements TeamDao {
         this.sessionFactory = (SessionFactory) applicationContext.getBean("sessionFactory");
     }
     @Override
-    public Team getTeam(Manager manager) {
-        Session session = sessionFactory.openSession();
-        session.beginTransaction();
-        Team team = (Team) session.createQuery("FROM Team T WHERE T.manager.id=:id")
-                .setParameter("id", manager.getId()).uniqueResult();
-        session.getTransaction().commit();
-        session.close();
-        return team;
+    public Team getTeam(Manager manager) throws Exception {
+        try {
+            Session session = sessionFactory.openSession();
+            session.beginTransaction();
+            Team team = (Team) session.createQuery("FROM Team T WHERE T.manager.id=:id")
+                    .setParameter("id", manager.getId()).uniqueResult();
+            session.getTransaction().commit();
+            session.close();
+            return team;
+        } catch (Exception e) {
+            logger.error(e);
+            throw new Exception("database error:" + e.getMessage());
+        }
     }
 }

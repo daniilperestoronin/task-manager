@@ -21,26 +21,27 @@
         <header id="section_header">
         </header>
         <section class="workspace">
-            <h2 class="workspace-header">Tasks</h2>
+            <h2 class="workspace-header">My tasks</h2>
 
             <form method="post" action="">
-                <c:forEach var="team" items="${Tasks}">
+                <c:forEach var="progect" items="${Tasks}">
                     <p>Id :
-                        <input name="textfield" type="text" value="<c:out value="${team.id}"/>" disabled></p>
+                        <input name="textfield" type="text" value="<c:out value="${progect.id}"/>" disabled></p>
                     <p>Name :
-                        <input name="textfield" type="text" value="<c:out value="${team.name}"/>" disabled></p>
+                        <input name="textfield" type="text" value="<c:out value="${progect.name}"/>" disabled></p>
                     <p>Description :
-                        <input name="textfield" type="text" value="<c:out value="${team.description}"/>" disabled>
+                        <input name="textfield" type="text" value="<c:out value="${progect.description}"/>" disabled>
                     </p>
-                    <c:forEach var="developer" items="${team.technicalTaskJobList}">
+                    <c:forEach var="projectJob" items="${progect.technicalTaskJobList}">
                         <p>Tasks job</p>
                         <p>Name :
-                            <input name="textfield" type="text" value="<c:out value="${developer.name}"/>" disabled></p>
+                            <input name="textfield" type="text" value="<c:out value="${projectJob.name}"/>" disabled>
+                        </p>
                         <p>Description :
-                            <input name="textfield" type="text" value="<c:out value="${developer.description}"/>"
+                            <input name="textfield" type="text" value="<c:out value="${projectJob.description}"/>"
                                    disabled></p>
                         <p>Developer level :
-                            <input name="textfield" type="text" value="<c:out value="${developer.developerLevel}"/>"
+                            <input name="textfield" type="text" value="<c:out value="${projectJob.developerLevel}"/>"
                                    disabled></p>
                     </c:forEach>
                 </c:forEach>

@@ -17,4 +17,6 @@ public interface ManagerService {
     Team getTeam(Manager manager);
 
     List<TechnicalTask> getAllUndoneTechnicalTasck();
+
+    List<Project> getTeamProject(Manager manager);
 }

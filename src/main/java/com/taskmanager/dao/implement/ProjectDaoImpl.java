@@ -3,9 +3,9 @@ package com.taskmanager.dao.implement;
 import com.taskmanager.dao.ProjectDao;
 import com.taskmanager.model.customer.Customer;
 import com.taskmanager.model.developer.Developer;
+import com.taskmanager.model.manager.Manager;
 import com.taskmanager.model.project.Project;
 import com.taskmanager.model.project.ProjectJob;
-import com.taskmanager.model.team.Team;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -45,13 +45,13 @@ public class ProjectDaoImpl implements ProjectDao {
     }
 
     @Override
-    public List<Project> getTeamProject(Team team) throws Exception {
+    public List<Project> getTeamProject(Manager manager) throws Exception {
         try {
             Session session = sessionFactory.openSession();
             session.beginTransaction();
-            List technicalTasksList = session.createSQLQuery("SELECT *\n" +
-                    "FROM project WHERE project.developers_team_id =:id")
-                    .setParameter("id", team.getId()).list();
+            List technicalTasksList = session.createQuery("SELECT p FROM Project p, Team t WHERE " +
+                    "p.teamId=t.id AND t.manager.id=:id")
+                    .setParameter("id", manager.getId()).list();
             session.getTransaction().commit();
             session.close();
             return technicalTasksList;

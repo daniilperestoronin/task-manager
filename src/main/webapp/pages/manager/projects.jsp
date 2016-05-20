@@ -10,8 +10,8 @@
     <h1>Jobs Plainer</h1>
     <nav class="page_nav" id="page_nav">
         <a class="button" href="${pageContext.request.contextPath}/manager/team">My team</a>
-        <a class="button" href="">Technical tasks</a>
-        <a class="button" href="${pageContext.request.contextPath}/manager/projects">Projects</a>
+        <a class="button" href="${pageContext.request.contextPath}/manager/technicaltasks">Technical tasks</a>
+        <a class="button" href="">Projects</a>
         <a class="button" href="${pageContext.request.contextPath}/manager/singout">SingOut</a>
     </nav>
 </header>
@@ -20,32 +20,42 @@
         <header id="section_header">
         </header>
         <section class="workspace">
-            <h2 class="workspace-header">Technical tasks</h2>
-            <c:forEach var="progect" items="${technicalTasks}">
-                <form method="post"
-                      action="${pageContext.request.contextPath}/manager/newproject">
+            <h2 class="workspace-header">Projects</h2>
+
+            <form method="post" action="">
+                <c:forEach var="progect" items="${projects}">
                     <p>Id :
-                        <input readonly name="id" type="text" value="<c:out value="${progect.id}"/>"></p>
+                        <input name="textfield" type="text" value="<c:out value="${progect.id}"/>" disabled></p>
+
                     <p>Name :
-                        <input readonly name="textfield" type="text" value="<c:out value="${progect.name}"/>"></p>
+                        <input name="textfield" type="text" value="<c:out value="${progect.name}"/>" disabled></p>
+
                     <p>Description :
-                        <input readonly name="textfield" type="text" value="<c:out value="${progect.description}"/>">
+                        <input name="textfield" type="text" value="<c:out value="${progect.projectDescription}"/>"
+                               disabled>
                     </p>
-                    <c:forEach var="projectJob" items="${progect.technicalTaskJobList}">
+
+                    <p>Score :
+                        <input name="textfield" type="text" value="<c:out value="${progect.projectScore.score}"/>"
+                               disabled>
+                    </p>
+                    <c:forEach var="projectJob" items="${progect.projectJobList}">
                         <p>Tasks job</p>
+
                         <p>Name :
                             <input name="textfield" type="text" value="<c:out value="${projectJob.name}"/>" disabled>
                         </p>
+
                         <p>Description :
                             <input name="textfield" type="text" value="<c:out value="${projectJob.description}"/>"
                                    disabled></p>
-                        <p>Developer level :
-                            <input name="textfield" type="text" value="<c:out value="${projectJob.developerLevel}"/>"
+
+                        <p>Developer time :
+                            <input name="textfield" type="text" value="<c:out value="${projectJob.developerTime}"/>"
                                    disabled></p>
                     </c:forEach>
-                    <p><input type="submit" value="Perform"></p>
+                </c:forEach>
             </form>
-            </c:forEach>
         </section>
     </article>
 </section>

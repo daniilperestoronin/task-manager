@@ -8,5 +8,5 @@ import com.taskmanager.model.team.Team;
  */
 public interface TeamDao {
 
-    Team getTeam(Manager manager);
+    Team getTeam(Manager manager) throws Exception;
 }
