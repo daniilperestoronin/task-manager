@@ -25,10 +25,9 @@
         <error-code>404</error-code>
         <location>/pages/errorpage.jsp</location>
     </error-page>
-    <!--
-        <error-page>
-            <error-code>404</error-code>
-            <location>/pages/errorpage.jsp</location>
-        </error-page>
-    -->
+
+    <error-page>
+        <error-code>404</error-code>
+        <location>/pages/errorpage.jsp</location>
+    </error-page>
 </web-app>

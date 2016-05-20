@@ -69,10 +69,17 @@ public class CustomerController {
     }
 
     @RequestMapping("/createtask")
-    public String createTask(ModelMap model) {
+    public String createTask(HttpSession httpSession, ModelMap model, @RequestParam String name, String description) {
+        Customer customer = (Customer) httpSession.getAttribute("customer");
         TechnicalTask technicalTask = new TechnicalTask();
+        technicalTask.setName(name);
+        technicalTask.setDescription(description);
+        technicalTask.setCustomer(customer);
         int task_id = customerService.createNeTechnicalTask(technicalTask);
-        model.addAttribute("createmassage", task_id);
+        if (task_id != -1)
+            model.addAttribute("createmassage", "successfully created, ID: " + task_id);
+        else
+            model.addAttribute("createmassage", "Error");
         return "/customer/createstatus";
     }
 

@@ -71,6 +71,14 @@ public class TechnicalTask implements Serializable {
         this.technicalTaskJobList = technicalTaskJobList;
     }
 
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -21,8 +21,15 @@
         </header>
         <section class="workspace">
             <h2 class="workspace-header">New technical task</h2>
-            <form class="workspace-container">
-                <p><input type="text" placeholder="Name"></p>
+
+            <form method="post"
+                  action="${pageContext.request.contextPath}/customer/createtask">
+                <p>Technical task name :
+                    <input name="name" type="text" value="Task name"></p>
+
+                <p>Technical task description :
+                    <input name="description" type="text" value="Project description"/>
+                </p>
                 <p><input type="submit" value="Create"></p>
             </form>
         </section>
