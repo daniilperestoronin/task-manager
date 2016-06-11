@@ -6,6 +6,7 @@ import com.taskmanager.model.technicaltask.TechnicalTask;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Repository;
@@ -20,12 +21,9 @@ import java.util.List;
 public class TechnicalTaskDaoImpl implements TechnicalTaskDao {
 
     private static final Logger logger = Logger.getLogger(TechnicalTaskDaoImpl.class);
+    @Autowired
     SessionFactory sessionFactory;
 
-    {
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("/spring-config.xml");
-        this.sessionFactory = (SessionFactory) applicationContext.getBean("sessionFactory");
-    }
     @Override
     public int addTechnicalTask(TechnicalTask technicalTask) throws Exception {
         try {

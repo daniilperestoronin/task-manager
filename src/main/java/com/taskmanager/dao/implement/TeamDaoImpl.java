@@ -6,6 +6,7 @@ import com.taskmanager.model.team.Team;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Repository;
@@ -17,12 +18,9 @@ import org.springframework.stereotype.Repository;
 public class TeamDaoImpl implements TeamDao {
 
     private static final Logger logger = Logger.getLogger(TeamDaoImpl.class);
+    @Autowired
     SessionFactory sessionFactory;
 
-    {
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("/spring-config.xml");
-        this.sessionFactory = (SessionFactory) applicationContext.getBean("sessionFactory");
-    }
     @Override
     public Team getTeam(Manager manager) throws Exception {
         try {
